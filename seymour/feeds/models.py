@@ -6,6 +6,23 @@ class Feed(models.Model):
     feed_url = models.URLField(max_length=512)
     etag = models.TextField(null=True) 
     last_modified = models.DateTimeField(null=True)
+    content = models.TextField(null=True)
+
+    def parse(self):
+        from feedparser import parse as parse_feed
+        if self.content:
+            feed = parse_feed(self.content)
+            for entry in feed.entries:   
+                page = Page()
+                page.title = entry.title
+                page.date = entry.published 
+                page.feed = self
+                page.permalink = entry.link
+                page.guid = entry.id
+                page.content = entry.description
+                page.save()
+        else:
+            return False 
 
 class Page(models.Model):
 

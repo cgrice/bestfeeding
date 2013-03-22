@@ -19,17 +19,16 @@ class TaskFetchFeed(Task):
             headers['If-Modified-Since'] = last_modified
         r = requests.get(feed.feed_url, headers=headers)
 
-        print r.request.headers
-
         if r.status_code == 200:
            if 'ETag' in r.headers:
                 feed.etag = r.headers['ETag']
            if 'Last-Modified' in r.headers:
                 last_modified = parse_date(r.headers['Last-Modified'])
                 feed.last_modified = last_modified
-
+           feed.content = r.text
+        
+        feed.parse()
         feed.save()
-
-        print r.status_code
+        
         
         
