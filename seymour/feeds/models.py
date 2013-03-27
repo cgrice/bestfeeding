@@ -1,4 +1,5 @@
 from django.db import models
+from dateutil.parser import parse as parse_date
 
 # Create your models here.
 class Feed(models.Model):
@@ -15,12 +16,13 @@ class Feed(models.Model):
             for entry in feed.entries:   
                 page = Page()
                 page.title = entry.title
-                page.date = entry.published 
+                page.date = parse_date(entry.published)
                 page.feed = self
                 page.permalink = entry.link
                 page.guid = entry.id
                 page.content = entry.description
                 page.save()
+                print page
         else:
             return False 
 
