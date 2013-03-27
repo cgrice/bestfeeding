@@ -119,7 +119,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
-    'djcelery',
+    'djcelery', 
+    'registration',
     'feeds',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
@@ -156,6 +157,12 @@ LOGGING = {
         },
     }
 }
+
+ACCOUNT_ACTIVATION_DAYS = 7
+EMAIL_HOST = get_env_variable('DJANGO_EMAIL_HOST')
+EMAIL_PORT = get_env_variable('DJANGO_EMAIL_PORT')
+EMAIL_HOST_USER = get_env_variable('DJANGO_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = get_env_variable('DJANGO_EMAIL_HOST_PASSWORD')
 
 import djcelery
 djcelery.setup_loader()
