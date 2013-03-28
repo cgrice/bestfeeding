@@ -118,10 +118,13 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'south',
     'djcelery', 
     'registration',
     'feeds',
+    'reading',
+    'profiles',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -156,6 +159,10 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: '/',
 }
 
 ACCOUNT_ACTIVATION_DAYS = 7
