@@ -28,7 +28,7 @@ class Feed(models.Model):
 
 class Page(models.Model):
 
-    feed = models.ForeignKey('Feed')
+    feed = models.ForeignKey('Feed', related_name="pages")
     date = models.DateTimeField()
     title = models.CharField(max_length=1024)
     content = models.TextField()

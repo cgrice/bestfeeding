@@ -1,0 +1,5 @@
+{{object.feed.feed_url}}
+{{object.feed.pages.all}}
+{% for page in object.feed.pages_set.all %}
+	{{page.title}}
+{% endfor %}
