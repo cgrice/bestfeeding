@@ -8,6 +8,7 @@ class Feed(models.Model):
     etag = models.TextField(null=True) 
     last_modified = models.DateTimeField(null=True)
     content = models.TextField(null=True)
+    fetch_next = models.DateTimeField(null=True)
 
     def parse(self):
         from feedparser import parse as parse_feed
@@ -25,6 +26,13 @@ class Feed(models.Model):
                 print page
         else:
             return False 
+
+    def fetch(self):
+        task = TaskFetchFeed()
+        if(len(feed.pages.all()) == 0):
+            task.run(self)
+        else:
+            TaskFetchFeed.delay(self)
 
 class Page(models.Model):
 

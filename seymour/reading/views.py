@@ -5,6 +5,9 @@ from braces.views import LoginRequiredMixin, UserFormKwargsMixin
 
 from .models import UserSubscription, UserPage
 from .forms import UserSubscriptionForm
+
+from feeds.tasks import TaskFetchFeed
+
 # Create your views here.
 
 
@@ -20,7 +23,6 @@ class FeedCreateView(LoginRequiredMixin, UserFormKwargsMixin, CreateView):
 
 		self._feed = feed
 
-
 		return super(FeedCreateView, self).form_valid()
 
 class FeedDeleteView(LoginRequiredMixin, DeleteView):
@@ -29,6 +31,15 @@ class FeedDeleteView(LoginRequiredMixin, DeleteView):
 
 class FeedDetailView(LoginRequiredMixin, DetailView):
 	model = UserSubscription
+
+	def get(self, request, *args, **kwargs):
+		self.object = self.get_object()
+
+		feed = self.object.feed
+		
+			
+		context = self.get_context_data(object=self.object)
+		return self.render_to_response(context)
 
 class FeedListView(LoginRequiredMixin, ListView):
 	model = UserSubscription
