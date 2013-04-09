@@ -1,5 +1,11 @@
 from django.db import models
+from django.utils import timezone
+
+import datetime
+
 from dateutil.parser import parse as parse_date
+
+from .tasks import TaskFetchFeed
 
 # Create your models here.
 class Feed(models.Model):
@@ -9,6 +15,9 @@ class Feed(models.Model):
     last_modified = models.DateTimeField(null=True)
     content = models.TextField(null=True)
     fetch_next = models.DateTimeField(null=True)
+
+    def __unicode__(self):
+        return self.feed_url
 
     def parse(self):
         from feedparser import parse as parse_feed
@@ -23,16 +32,26 @@ class Feed(models.Model):
                 page.guid = entry.id
                 page.content = entry.description
                 page.save()
-                print page
         else:
             return False 
 
     def fetch(self):
-        task = TaskFetchFeed()
-        if(len(feed.pages.all()) == 0):
-            task.run(self)
-        else:
-            TaskFetchFeed.delay(self)
+        if self.fetch_next is None or self.fetch_next <= timezone.now():
+            task = TaskFetchFeed()
+            if(len(self.pages.all()) == 0):
+                task.run(self)
+            else:
+                TaskFetchFeed.delay(self)
+
+
+    def save(self, *args, **kwargs):
+        if not self.fetch_next:
+            self.fetch_next = timezone.now()
+
+        try:
+            super(Feed, self).save(*args, **kwargs)
+        except e:
+            raise e
 
 class Page(models.Model):
 
@@ -46,3 +65,6 @@ class Page(models.Model):
     permalink = models.CharField(max_length=1024)
     guid = models.CharField(max_length=512)
     hash = models.CharField(max_length=128)
+
+    def __unicode__(self):
+        return "%s" % (self.title,)

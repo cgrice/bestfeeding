@@ -1,8 +1,9 @@
 import requests
 from dateutil.parser import parse as parse_date
+from datetime import datetime, timedelta
 from celery.task import Task
 
-from .models import Feed
+from django.utils import timezone
 
 class TaskFetchFeed(Task):
 
@@ -17,18 +18,25 @@ class TaskFetchFeed(Task):
                 '%A, %d-%B-%Y %H:%I:%S %Z' 
             )
             headers['If-Modified-Since'] = last_modified
+
+        print "Getting latest feed for " + feed.feed_url
+
         r = requests.get(feed.feed_url, headers=headers)
 
+        print "Status returned : %s" % r.status_code
+
         if r.status_code == 200:
-           if 'ETag' in r.headers:
+            if 'ETag' in r.headers:
                 feed.etag = r.headers['ETag']
-           if 'Last-Modified' in r.headers:
+            if 'Last-Modified' in r.headers:
                 last_modified = parse_date(r.headers['Last-Modified'])
                 feed.last_modified = last_modified
-           feed.content = r.text
+            feed.content = r.text
+            feed.fetch_next = timezone.now() + timedelta(minutes=5)
         
         feed.parse()
         feed.save()
         
+        print "Feed parsed and saved"        
         
         

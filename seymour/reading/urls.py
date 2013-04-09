@@ -19,7 +19,7 @@ urlpatterns = patterns('',
 		name='subscription_detail'
 	),
 	url(
-		regex=r'$',
+		regex=r'^$',
 		view=FeedListView.as_view(),
 		name='subscription_list'
 	),

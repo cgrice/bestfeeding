@@ -8,8 +8,6 @@ from .forms import UserSubscriptionForm
 
 from feeds.tasks import TaskFetchFeed
 
-# Create your views here.
-
 
 class FeedCreateView(LoginRequiredMixin, UserFormKwargsMixin, CreateView):
 	model = UserSubscription
@@ -36,7 +34,7 @@ class FeedDetailView(LoginRequiredMixin, DetailView):
 		self.object = self.get_object()
 
 		feed = self.object.feed
-		
+		feed.fetch()
 			
 		context = self.get_context_data(object=self.object)
 		return self.render_to_response(context)
@@ -44,3 +42,8 @@ class FeedDetailView(LoginRequiredMixin, DetailView):
 class FeedListView(LoginRequiredMixin, ListView):
 	model = UserSubscription
 	context_object_name = 'subscriptions'
+
+	def get_queryset(self):
+		feeds = UserSubscription.objects.filter(user=self.request.user)
+		UserPage
+		return feeds
