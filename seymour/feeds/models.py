@@ -26,10 +26,16 @@ class Feed(models.Model):
             for entry in feed.entries:   
                 page = Page()
                 page.title = entry.title
-                page.date = parse_date(entry.published)
+		if 'published' in entry:
+	                page.date = parse_date(entry.published)
+		else:
+			page.date = timezone.now()
                 page.feed = self
                 page.permalink = entry.link
-                page.guid = entry.id
+		if 'id' in entry:
+	                page.guid = entry.id
+		else:
+			page.guid = entry.link
                 page.content = entry.description
                 page.save()
         else:

@@ -15,9 +15,10 @@ class FeedCreateView(LoginRequiredMixin, UserFormKwargsMixin, CreateView):
 
 	def form_valid(self, form):
 
-		subscription = UserSubscription.objects.get(feed=form._feed, user=form._user)
-		if (subscription):
-			return HttpResponseRedirect(subscription.get_absolute_url())
+		subscription = UserSubscription.objects.get_or_create(feed=form._feed, user=form._user)
+		print subscription
+		if (subscription[0]):
+			return HttpResponseRedirect(subscription[0].get_absolute_url())
 
 		self._feed = feed
 

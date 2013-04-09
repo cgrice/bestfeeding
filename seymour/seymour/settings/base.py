@@ -59,7 +59,9 @@ PROJECT_ROOT = Path(__file__).ancestor(3)
 
 MEDIA_ROOT = PROJECT_ROOT.child('media')
 
-STATIC_ROOT = PROJECT_ROOT.child('static')
+STATICFILES_DIRS = (
+    PROJECT_ROOT.child('static'),
+)
 
 TEMPLATE_DIRS = (
     PROJECT_ROOT.child('templates'),
@@ -95,6 +97,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
