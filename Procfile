@@ -1,2 +1,2 @@
-web: gunicorn bestfeeding/bestfeeding/wsgi.py
+web: gunicorn bestfeeding.wsgi
 
