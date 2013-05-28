@@ -39,9 +39,6 @@
         {% endif %}
             <div class="container">
                 <div class="row pagination-centered">
-                    {% if diff %}
-                    <h5>Minutes since last feed: {{diff}}</h5>
-                    {% endif %}
                     <div class="span6 offset3">
                     {% regroup feeds by start_time|date:"dS M" as feeds_by_day %}
                     {% for feeds in feeds_by_day %}
