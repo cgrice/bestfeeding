@@ -20,7 +20,7 @@ urlpatterns = patterns('',
         name='feed_create'
     ),
     url(
-        regex=r'^/delete/(?P<feed_id>\d+)$',
+        regex=r'^delete/(?P<feed_id>\d+)$',
         view=delete,
         name='feed_delete'
     ),
