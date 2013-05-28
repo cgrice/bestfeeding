@@ -8,8 +8,12 @@
     background-color: #ecf0f1;
 }
 
-.info {
+body {
     background-color: #18bc9c;
+}
+
+.info h3 {
+    color: white;
 }
 
 .buttons {
