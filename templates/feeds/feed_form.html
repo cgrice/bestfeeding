@@ -3,12 +3,12 @@
     <head>
         {% load static from staticfiles %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" />
+        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" />
         <link rel="stylesheet" href="{% static "css/feeds.css" %}" />
     </head>
 
     <body>
-
+        <div class="buttons">
             <div class="container">
                 <div class="row pagination-centered">
                     <br/>
@@ -30,13 +30,17 @@
                     </div>
                 </div>
             </div>
+        </div>
         {% if diff %}
+            <div class="timesince">
                 <div class="container">
                     <div class="row pagination-centered timesince">
                         <h5>Minutes since last feed: {{diff}}</h5>
                     </div>
                 </div>
+            </div>
         {% endif %}
+        <div class="info">
             <div class="container">
                 <div class="row pagination-centered">
                     <div class="span6 offset3">
@@ -58,7 +62,7 @@
                     </div>
                 </div>
             </div>
-
+        </div>
 
     </body>
 </html>
