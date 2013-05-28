@@ -20,6 +20,10 @@ body {
     background-color: white;
 }
 
+.feeds {
+    background-color: white;
+}
+
 
 @media all and (max-width: 768px)  {
     body {
