@@ -25,7 +25,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="side" value="R" />
                         <input type="hidden" name="shield" value="0" />
-                        <input type="submit" class="btn btn-large btn-primary btn-full" value="RIGHT">
+                        <input type="submit" class="btn btn-large btn-success btn-full" value="RIGHT">
                     </form>
                 </div>
             </div>
@@ -40,6 +40,7 @@
                             <tr>
                                <td>{{feed.side}}</td>
                                <td>{{feed.start_time|date:"P"}}</td>
+                               <td><a class="btn btn-danger" href="/delete/{{feed.id}}"><i class="icon-remove"></i></a></td>
                             </tr>
                         {% endfor %}
                     </table>
