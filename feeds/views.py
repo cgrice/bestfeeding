@@ -31,7 +31,7 @@ def home(request):
 
     if len(feeds) > 0:
         if feeds[0].start_time < datetime.now():
-            diff = readable_delta(datetime.now() - feeds[0].start_time).seconds)
+            diff = readable_delta((datetime.now() - feeds[0].start_time).seconds)
         else:
             diff = False
     else:
