@@ -9,7 +9,6 @@
 
     <body>
 
-        <div class="buttons">
             <div class="container">
                 <div class="row pagination-centered">
                     <br/>
@@ -31,17 +30,13 @@
                     </div>
                 </div>
             </div>
-        </div>
         {% if diff %}
-            <div class="timesince">
                 <div class="container">
                     <div class="row pagination-centered timesince">
                         <h5>Minutes since last feed: {{diff}}</h5>
                     </div>
                 </div>
-            </div>
         {% endif %}
-        <div class="info">
             <div class="container">
                 <div class="row pagination-centered">
                     {% if diff %}
@@ -66,7 +61,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
 
     </body>
