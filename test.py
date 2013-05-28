@@ -1,4 +1,5 @@
-from feeds.tasks import TaskFetchFeed
 from feeds.models import Feed
-feed = Feed.objects.get(pk=1)
-TaskFetchFeed.delay(feed)
+feeds = Feed.objects.all()
+for feed in feeds:
+	feed.start_time = feed.round_time(feed.start_time, 15)
+	feed.save()
