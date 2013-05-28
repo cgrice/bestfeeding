@@ -10,6 +10,7 @@
 
 body {
     background-color: #18bc9c;
+    font-family: 'Lato', Arial, sans-serif;
 }
 
 .info h3 {
@@ -24,13 +25,36 @@ body {
     background-color: white;
 }
 
+.topnav h1 {
+    font-family: 'Patua One', cursive;
+    font-weight: normal;
+    margin: 0px;
+    color: white;
+}
+
+.topnav a:hover {
+  text-decoration: none;
+}
+
+.topnav .btn-group {
+  margin-top: 2px;
+}
+
+.topnav {
+  padding:20px;
+}
+
+input.btn {
+  font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 @media all and (max-width: 768px)  {
     body {
         padding: 0px;
     }
-    .info, .timesince, .buttons {
-        padding: 0px 20px;
+    .info, .timesince, .buttons, .topnav {
+        padding-left: 20px;
+        padding-right: 20px;
     }
     .half {
         float: left !important;

@@ -68,6 +68,7 @@ def readable_delta(seconds):
     if delta.days:
         return '%d day%s ago' % (delta.days, plur(delta.days))
     elif delta_hours:
+        delta_minutes = delta_minutes % 60
         return '%d hour%s, %d minute%s ago' % (delta_hours, plur(delta_hours), delta_minutes, plur(delta_minutes))
     elif delta_minutes:
         return '%d minute%s ago' % (delta_minutes, plur(delta_minutes))
