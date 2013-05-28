@@ -30,7 +30,9 @@
                 </div>
             </div>
             <div class="row pagination-centered">
+                {% if diff %}
                 <h5>Minutes since last feed: {{diff}}</h5>
+                {% endif %}
                 <div class="span6 offset3">
                 {% regroup feeds by start_time|date:"dS M" as feeds_by_day %}
                 {% for feeds in feeds_by_day %}
@@ -39,8 +41,10 @@
                         {% for feed in feeds.list %}
                             <tr>
                                <td>{{feed.side}}</td>
-                               <td>{{feed.start_time|date:"P"}}</td>
-                               <td><a class="btn btn-danger" href="/delete/{{feed.id}}"><i class="icon-remove"></i></a></td>
+                               <td>
+                                    {{feed.start_time|date:"P"}}
+                                    <a class="btn btn-small btn-danger pull-right" href="/delete/{{feed.id}}"><i class="icon-remove icon-white"></i></a>
+                              </td>
                             </tr>
                         {% endfor %}
                     </table>
