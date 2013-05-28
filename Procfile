@@ -1,2 +1,1 @@
-web: gunicorn bestfeeding.wsgi:application 
-
+web: gunicorn bestfeeding.wsgi 
