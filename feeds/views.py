@@ -6,7 +6,7 @@ from django.views.generic import CreateView
 from .models import Feed
 from .forms import FeedForm
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def home(request):
     feeds = Feed.objects.all().order_by('-start_time')
@@ -58,7 +58,7 @@ def readable_delta(seconds):
     readable_delta(1000)           # 15049 days ago (relative to now)
     '''
 
-    delta = datetime.timedelta(seconds=seconds)
+    delta = timedelta(seconds=seconds)
 
     # deltas store time as seconds and days, we have to get hours and minutes ourselves
     delta_minutes = delta.seconds // 60
