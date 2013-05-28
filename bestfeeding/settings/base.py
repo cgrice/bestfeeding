@@ -18,7 +18,7 @@ def get_env_variable(var_name):
 
 # Django settings for bestfeeding project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
