@@ -29,7 +29,7 @@ def home(request):
     else:
         form = FeedForm() # An unbound form
 
-    if feeds[0]:
+    if len(feeds) > 0:
         diff = (datetime.now() - feeds[0].start_time).seconds / 60
     else:
         diff = False
