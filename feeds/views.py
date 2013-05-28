@@ -40,6 +40,11 @@ def home(request):
         'feeds': feeds,
     })
 
+def delete(request, feed_id):
+    feed = Feed.objects.get(pk=feed_id)
+    feed.delete()
+    return HttpResponseRedirect('/') # Redirect after POST
+
 class FeedCreateView(CreateView):
     model = Feed
     form_class = FeedForm
