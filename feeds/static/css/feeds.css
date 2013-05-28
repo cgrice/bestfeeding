@@ -4,6 +4,18 @@
     padding: 1em!important;
 }
 
+.timesince {
+    background-color: #ecf0f1;
+}
+
+.info {
+    background-color: #18bc9c;
+}
+
+.buttons {
+    background-color: white;
+}
+
 
 @media all and (max-width: 768px)  {
     .half {
