@@ -22,6 +22,12 @@ body {
 
 
 @media all and (max-width: 768px)  {
+    body {
+        padding: 0px;
+    }
+    .info, .timesince, .buttons {
+        padding: 0px 20px;
+    }
     .half {
         float: left !important;
         width: 50% !important;
