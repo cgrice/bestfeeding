@@ -31,9 +31,9 @@ def home(request):
 
     if len(feeds) > 0:
         if feeds[0].start_time < datetime.now():
-            diff = (datetime.now() - feeds[0].start_time).seconds / 60
+            diff = readable_delta(datetime.now() - feeds[0].start_time).seconds)
         else:
-            diff = 0
+            diff = False
     else:
         diff = False
 
@@ -48,6 +48,36 @@ def delete(request, feed_id):
     feed.delete()
     return HttpResponseRedirect('/') # Redirect after POST
 
-class FeedCreateView(CreateView):
-    model = Feed
-    form_class = FeedForm
+def readable_delta(seconds):
+    '''Returns a nice readable delta.
+
+    readable_delta(1, 2)           # 1 second ago
+    readable_delta(1000, 2000)     # 16 minutes ago
+    readable_delta(1000, 9000)     # 2 hours, 133 minutes ago
+    readable_delta(1000, 987650)   # 11 days ago
+    readable_delta(1000)           # 15049 days ago (relative to now)
+    '''
+
+    delta = datetime.timedelta(seconds=seconds)
+
+    # deltas store time as seconds and days, we have to get hours and minutes ourselves
+    delta_minutes = delta.seconds // 60
+    delta_hours = delta_minutes // 60
+
+    ## show a fuzzy but useful approximation of the time delta
+    if delta.days:
+        return '%d day%s ago' % (delta.days, plur(delta.days))
+    elif delta_hours:
+        return '%d hour%s, %d minute%s ago' % (delta_hours, plur(delta_hours), delta_minutes, plur(delta_minutes))
+    elif delta_minutes:
+        return '%d minute%s ago' % (delta_minutes, plur(delta_minutes))
+    else:
+        return '%d second%s ago' % (delta.seconds, plur(delta.seconds))
+
+def plur(it):
+    '''Quick way to know when you should pluralize something.'''
+    try:
+        size = len(it)
+    except TypeError:
+        size = int(it)
+    return '' if size==1 else 's'
