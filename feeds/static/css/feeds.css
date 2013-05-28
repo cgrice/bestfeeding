@@ -689,3 +689,52 @@ input[type="submit"].btn.btn-mini {
      -moz-border-radius: 0 0 10px 10px;
           border-radius: 0 0 10px 10px;
 }
+
+.btn {
+  padding: 8px 20px;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: none;
+  background-image: none;
+  border: none;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: 0.25s;
+     -moz-transition: 0.25s;
+          transition: 0.25s;
+}
+
+.btn:hover,
+.btn:focus {
+  color: white;
+  -webkit-transition: 0.25s;
+     -moz-transition: 0.25s;
+          transition: 0.25s;
+}
+
+.btn:active,
+.btn.active {
+  color: rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn.disabled,
+.btn[disabled] {
+  color: white;
+}
+
+.btn-large {
+  padding: 18px 36px;
+}
+
+.btn-small {
+  padding: 2px 12px;
+}
+
+.btn-mini {
+  padding: 1px 8px;
+}
+
