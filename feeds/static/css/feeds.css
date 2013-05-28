@@ -13,7 +13,7 @@ body {
     font-family: 'Lato', Arial, sans-serif;
 }
 
-.info h3 {
+.info h3, .info p {
     color: white;
 }
 
