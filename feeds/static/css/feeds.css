@@ -4,6 +4,21 @@
     padding: 1em!important;
 }
 
+.btn {
+    padding: 8px 20px;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    background-image: none;
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+    transition: .25s;
+}
+
 .btn-primary.active,
 .btn-warning.active,
 .btn-danger.active,
