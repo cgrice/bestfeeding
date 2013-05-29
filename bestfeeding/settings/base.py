@@ -91,6 +91,10 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
 
+RAVEN_CONFIG = {
+    'dsn' : get_env_variable('SENTRY_DSN'),
+}
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -135,6 +139,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'feeds',
+    'raven.contrib.django.raven_compat',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

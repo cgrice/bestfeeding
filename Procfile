@@ -1,1 +1,1 @@
-web: gunicorn bestfeeding.wsgi 
+web: newrelic-admin run-program gunicorn bestfeeding.wsgi 
