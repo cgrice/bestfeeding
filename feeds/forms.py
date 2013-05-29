@@ -12,8 +12,8 @@ class FeedForm(forms.ModelForm):
 
 class FeedEntryForm(forms.ModelForm):
     
-    date = models.CharField(max_length=16)
-    time = models.CharField(max_length=16)
+    date = forms.CharField(max_length=16)
+    time = forms.CharField(max_length=16)
 
     class Meta:
         model = Feed
