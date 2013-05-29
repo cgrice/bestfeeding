@@ -44,7 +44,18 @@ def home(request):
     })
 
 def create(request):
-    form = FeedEntryForm()
+    if request.method == 'POST': # If the form has been submitted...
+        form = FeedEntryForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            new_feed = Feed()
+            new_feed.side = form.cleaned_data['side']
+            new_feed.save()
+            new_feed.start_time = datetime.strptime(form.cleaned_data['date'] + ' ' + form.cleaned_data['time'],
+                                                    '%d-%m-%Y %I:%M %p')
+            new_feed.save()
+            return HttpResponseRedirect('/') # Redirect after POST
+    else:
+        form = FeedEntryForm()
     return render(request, 'feeds/feed_form.html', {
         'form': form,
     })

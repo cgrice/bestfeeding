@@ -40,8 +40,8 @@
                         {% regroup feeds by start_time|date:"dS M" as feeds_by_day %}
                         <div id='slider' class='swipe'>
                             <div class='swipe-wrap'>
-                                <div>
                                 {% for feeds in feeds_by_day %}
+                                    <div>
                                     <h3>{{feeds.grouper}}</h3>
                                     <table class="table table-bordered table-striped feeds">
                                         {% for feed in feeds.list %}
@@ -60,8 +60,8 @@
                                             </tr>
                                         {% endfor %}
                                     </table>
+                                    </div>
                                 {% endfor %}
-                                </div>
                             </div>
                         </div>
                     {% endif %}
@@ -74,4 +74,15 @@
                 </div>
             </div>
         </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        window.mySwipe = new Swipe(document.getElementById('slider'), {
+            startSlide: $('.swipe-wrap>div').length-1,
+            continuous: false
+        });
+    });
+</script>
 {% endblock %}

@@ -1,3 +1,18 @@
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+
 .btn-full {
     width: 90%!important;
     font-size: 2em!important;
@@ -19,6 +34,7 @@ body {
 
 .buttons {
     background-color: white;
+    padding-top: 20px;
 }
 
 .feeds {
