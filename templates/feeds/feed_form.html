@@ -1,33 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        {% load static from staticfiles %}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Patua+One' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" />
-        <link rel="stylesheet" href="{% static "css/feeds.css" %}" />
-    </head>
+{% extends 'base.html' %}
 
-    <body>
-        <div class="container topnav">
-            <div class="row">
-                <div class="span12">
-                    <div class="btn-group pull-right">
-                      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                        <span class="icon-white icon-align-justify"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a href="/new">Log a Feed</a></li>
-                        <li><a href="/stats">Stats</a></li>
-                        <li><a href="#about">About</a></li>
-                      </ul>
-                    </div>
-                    <div class="btn-group pull-right">
-                    </div>
-                    <a href="/"><h1>Bestfeeding</h1></a>
-                </div>
-            </div>
-        </div>
+{% block main %}
         <div class="buttons">
             <div class="container">
                 <div class="row pagination-centered">
@@ -94,8 +67,4 @@
                 </div>
             </div>
         </div>
-
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
-        <script src="{% static "js/bootstrap.js" %}"></script>
-    </body>
-</html>
+{% endblock %}
