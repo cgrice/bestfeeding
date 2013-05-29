@@ -13,14 +13,15 @@
     <div class="buttons">
         <div class="container">
             <form action="" method="POST" class="form-inline">
+                {% csrf_token %}
                 <div class="row pagination-centered side_select">
                     <h3>Add new feed</h3>
                     <br/>
                     <div class="span3 offset3 half">
-                        <button class="btn btn-large btn-warning disabled side_btn" rel="L">Left</button>
+                        <span class="btn btn-large btn-warning disabled side_btn" rel="L">Left</span>
                     </div>
                     <div class="span3 half">
-                        <button class="btn btn-large btn-info disabled side_btn" rel="R">Right</button>
+                        <span class="btn btn-large btn-info disabled side_btn" rel="R">Right</span>
                     </div>
                     <input type="hidden" name="side" id="side_input">
                 </div>
@@ -43,7 +44,7 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row pagination-nentered">
+                <div class="row pagination-centered">
                     <div class="span6 offset3">
                         <input type="submit" class="btn btn-primary btn-large" value="Add">
                     </div>
