@@ -13,35 +13,39 @@
     <div class="buttons">
         <div class="container">
             <form action="" method="POST" class="form-inline">
-                <div class="row pagination-centered">
+                <div class="row pagination-centered side_select">
                     <h3>Add new feed</h3>
                     <br/>
                     <div class="span3 offset3 half">
-                        <button class="btn btn-large btn-warning disabled" rel="L">Left</button>
+                        <button class="btn btn-large btn-warning disabled side_btn" rel="L">Left</button>
                     </div>
                     <div class="span3 half">
-                        <button class="btn btn-large btn-info disabled" rel="R">Right</button>
+                        <button class="btn btn-large btn-info disabled side_btn" rel="R">Right</button>
                     </div>
+                    <input type="hidden" name="side" id="side_input">
                 </div>
                 <br/>
                 <div class="row pagination-centered">
-                    <div class="span3 offset3 half">
+                    <div class="span6 offset3">
                         <div class="input-append bootstrap-timepicker">
                             <input id="feed_time" type="text" name="time">
                             <span class="add-on"><i class="icon-time"></i></span>
                         </div>
                     </div>  
-                    <div class="span3 half">
+                </div>
+                <br/>
+                <div class="row pagination-centered">
+                    <div class="span6 offset3">
                         <div class="input-append date" id="feed_date" data-date-format="dd-mm-yyyy">
-                            <input name="date" size="16" type="text" readonly>
+                            <input name="date" type="text" readonly>
                             <span class="add-on"><i class="icon-th"></i></span>
                         </div>
                     </div>
                 </div>
                 <br/>
-                <div class="row pagination-centered">
+                <div class="row pagination-nentered">
                     <div class="span6 offset3">
-                        <input type="submit" class="btn btn-primary btn-huge" value="Add">
+                        <input type="submit" class="btn btn-primary btn-large" value="Add">
                     </div>
                 </div>
             </form>
@@ -58,5 +62,13 @@
         disableFocus: true
     });
     $('#feed_date').datepicker()
+
+    $(document).ready(function() {
+        $('.side_select .side_btn').click(function() {
+            $('.side_btn').addClass('disabled');
+            $(this).removeClass('disabled');
+            $('#side_input').value($(this).attr('rel'));
+        });
+    });
 </script>
 {% endblock %}
