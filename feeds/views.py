@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 
 from .models import Feed
-from .forms import FeedForm
+from .forms import FeedForm, FeedEntryForm
 
 from datetime import datetime, timedelta
 
@@ -37,10 +37,16 @@ def home(request):
     else:
         diff = False
 
-    return render(request, 'feeds/feed_form.html', {
+    return render(request, 'feeds/home.html', {
         'diff': diff,
         'form': form,
         'feeds': feeds,
+    })
+
+def create(request):
+    form = FeedEntryForm()
+    return render(request, 'feeds/feed_form.html', {
+        'form': form,
     })
 
 def delete(request, feed_id):
