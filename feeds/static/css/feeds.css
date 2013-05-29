@@ -44,6 +44,10 @@ body {
   padding:20px;
 }
 
+span.btn:hover {
+    cursor: pointer;
+}
+
 input.btn {
   font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

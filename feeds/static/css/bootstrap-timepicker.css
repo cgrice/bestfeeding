@@ -113,7 +113,7 @@
 }
 @media (max-width: 767px) {
   .bootstrap-timepicker {
-    width: 100%;
+    width: 175px;
   }
   .bootstrap-timepicker .dropdown-menu {
     width: 160px;
