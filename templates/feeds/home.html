@@ -68,7 +68,9 @@
                     </div>
                 </div>
             </div>
-            <div class="info">
+        </div>
+        <div class="info">
+            <div class="container">
                 <div class="row">
                     <h3 id="about">About</h3>
                     <p>Bestfeeding is an app for logging breastfeeding times and sides. Just touch left or right to
@@ -82,7 +84,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         window.mySwipe = new Swipe(document.getElementById('slider'), {
-            startSlide: $('.swipe-wrap>div').length-1,
+            startSlide: $('.swipe-wrap>div').length,
             continuous: false
         });
     });
