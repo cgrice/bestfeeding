@@ -12,6 +12,12 @@ class Feed(models.Model):
 	)
 	
 	start_time = models.DateTimeField(auto_now_add=True, blank=True)
+    year = models.IntegerField(blank=True)
+    month = models.IntegerField(blank=True)
+    day = models.IntegerField(blank=True)
+    day_of_week = models.IntegerField(blank=True)
+    hour = models.IntegerField(blank=True)
+    minute = models.IntegerField(blank=True)
 	side = models.CharField(max_length=1,
 				choices=SIDE_CHOICES)
 	shield = models.BooleanField()

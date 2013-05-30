@@ -22,6 +22,12 @@ def home(request):
                 new_feed.start_time,
                 15*60
             )
+            new_feed.year = new_feed.start_time.year
+            new_feed.month = new_feed.start_time.month
+            new_feed.day = new_feed.start_time.day
+            new_feed.day_of_week = new_feed.start_time.weekday()
+            new_feed.minute = new_feed.start_time.minute
+            new_feed.hour = new_feed.start_time.hour
             new_feed.save()
             # Process the data in form.cleaned_data
                 # ...
@@ -52,7 +58,14 @@ def create(request):
             new_feed.save()
             new_feed.start_time = datetime.strptime(form.cleaned_data['date'] + ' ' + form.cleaned_data['time'],
                                                     '%d-%m-%Y %I:%M %p')
+            new_feed.year = new_feed.start_time.year
+            new_feed.month = new_feed.start_time.month
+            new_feed.day = new_feed.start_time.day
+            new_feed.day_of_week = new_feed.start_time.weekday()
+            new_feed.minute = new_feed.start_time.minute
+            new_feed.hour = new_feed.start_time.hour
             new_feed.save()
+
             return HttpResponseRedirect('/') # Redirect after POST
     else:
         form = FeedEntryForm()
