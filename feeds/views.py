@@ -9,7 +9,7 @@ from .forms import FeedForm, FeedEntryForm
 from datetime import datetime, timedelta
 
 def home(request):
-    feeds = Feed.objects.all().order_by('-start_time')
+    feeds = Feed.objects.all().order_by('-start_time', '-id')
 
     if request.method == 'POST': # If the form has been submitted...
         form = FeedForm(request.POST) # A form bound to the POST data
