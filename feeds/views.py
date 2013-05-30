@@ -82,13 +82,13 @@ def delete(request, feed_id):
 def stats(request):
     total_punch = Feed.objects.values('day_of_week', 'hour').order_by().annotate(Count('pk'))
 
-    7_days_ago = timezone.now().date() - timedelta(days=7)
-    last_7_punch = Feed.objects.filter(start_time__gte=7_days_go).values('day_of_week', 'hour').order_by().annotate(Count('pk'))
+    last_week = timezone.now() - timedelta(days=7)
+    last_week_punch = Feed.objects.filter(start_time__gte=last_week).values('day_of_week', 'hour').order_by().annotate(Count('pk'))
     histogram = Feed.objects.all().values('day', 'month', 'year', 'side').annotate(Count('pk')).order_by('year', 'month', 'day')
 
     return render(request, 'feeds/stats.html', {
         'punch' : total_punch,
-        '7_punch' : 7_punch,
+        'week_punch' : last_week_punch,
         'histogram' : histogram,
     })
 
