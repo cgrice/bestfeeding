@@ -8,6 +8,7 @@ class FeedForm(forms.ModelForm):
 
     class Meta:
         model = Feed
+        fields = ['side', 'shield']
 
 
 class FeedEntryForm(forms.ModelForm):
