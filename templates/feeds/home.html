@@ -40,7 +40,7 @@
                         {% regroup feeds by start_time|date:"dS M" as feeds_by_day %}
                         <div id='slider' class='swipe'>
                             <div class='swipe-wrap'>
-                                {% for feeds in feeds_by_day %}
+                                {% for feeds in feeds_by_day reversed %}
                                     <div>
                                     <h3>{{feeds.grouper}}</h3>
                                     <table class="table table-bordered table-striped feeds">
