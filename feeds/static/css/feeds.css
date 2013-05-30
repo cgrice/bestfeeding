@@ -39,7 +39,8 @@ body {
 
 .feeds {
     background-color: white;
-    margin: 0px 20px;
+    width: 90%;
+    margin-left: 5%;
 }
 
 .topnav h1 {
@@ -76,6 +77,9 @@ input.btn {
     .info, .timesince, .buttons, .topnav {
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .info.feedlist {
+        padding: 0px;
     }
     .half {
         float: left !important;
