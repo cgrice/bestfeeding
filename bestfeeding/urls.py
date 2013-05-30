@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 admin.autodiscover()
 
-from feeds.views import home, create, delete
+from feeds.views import home, create, delete, stats
 
 urlpatterns = patterns('',
     # (r'^$', 'reading.views.home')
@@ -28,6 +28,11 @@ urlpatterns = patterns('',
         regex=r'^delete/(?P<feed_id>\d+)$',
         view=delete,
         name='feeds_delete'
+    ),
+    url(
+        regex=r'^stats$',
+        view=stats,
+        name='feeds_stats'
     ),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
