@@ -4,6 +4,7 @@
     <div class="buttons">
         <div class="container">
                 <div class="row pagination-centered">
+                    <div id="punchcard"></div>
                 </div>
             </form>
         </div>
@@ -12,6 +13,28 @@
 {% endblock %}
 
 {% block scripts %}
+{% load static from staticfiles %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.1.6/d3.min.js"></script>
 <script type="text/javascript">
+var pane_left = 120
+  , pane_right = 800
+  , width = pane_left + pane_right
+  , height = 520
+  , margin = 10
+  , i
+  , j
+  , tx
+  , ty
+  , max = 0
+  , data = [
+    {% for day, hours in punch.items %}
+    [
+        {% for hour in hours %}
+        {{hour}},
+        {% endfor %}
+    ],
+    {% endfor %}
+  ];
 </script>
+<script type="text/javascript" src="{% static "js/stats.js" %}"></script>
 {% endblock %}

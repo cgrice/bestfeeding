@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import CreateView
 from django.utils import timezone
+from django.db.models import Count
 
 from .models import Feed
 from .forms import FeedForm, FeedEntryForm
@@ -80,14 +81,25 @@ def delete(request, feed_id):
     return HttpResponseRedirect('/') # Redirect after POST
 
 def stats(request):
-    total_punch = Feed.objects.values('day_of_week', 'hour').order_by().annotate(Count('pk'))
+    total_punchcard = {
+        1 : [0] * 24,
+        2 : [0] * 24,
+        3 : [0] * 24,
+        4 : [0] * 24,
+        5 : [0] * 24,
+        6 : [0] * 24,
+        7 : [0] * 24,
+    }
+    total_punch = Feed.objects.values('day_of_week', 'hour').order_by('day_of_week').annotate(Count('pk'))
+    for item in total_punch:
+        total_punchcard[item['day_of_week']][item['hour']] = item['pk__count']
 
     last_week = timezone.now() - timedelta(days=7)
     last_week_punch = Feed.objects.filter(start_time__gte=last_week).values('day_of_week', 'hour').order_by().annotate(Count('pk'))
     histogram = Feed.objects.all().values('day', 'month', 'year', 'side').annotate(Count('pk')).order_by('year', 'month', 'day')
 
     return render(request, 'feeds/stats.html', {
-        'punch' : total_punch,
+        'punch' : total_punchcard,
         'week_punch' : last_week_punch,
         'histogram' : histogram,
     })
