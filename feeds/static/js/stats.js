@@ -38,7 +38,7 @@ for (i in y.ticks(7)) {
     attr("x", margin).
     attr("y", height - 3 * margin - y(i) - 5).
     attr("text-anchor", "left").
-    text(["Sunday", "Saturday", "Friday", "Thursday", "Wednesday", "Tuesday", "Monday"][i]);
+    text(["Sn", "St", "F", "Th", "W", "Tu", "M"][i]);
 
   punchcard.
     append("g").
