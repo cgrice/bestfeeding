@@ -65,13 +65,9 @@ punchcard.
   attr("y", height - 3 * margin).
   attr("text-anchor", "middle").
   text(function(d) {
-    if (d === 0) {
-      return "12a";
-    } else if (d > 0 && d < 12 && d % 2 == 0) {
+    if (d >= 0 && d < 12 && d % 2 == 0) {
       return d;
-    } else if (d === 12) {
-      return "12p";
-    } else if (d > 12 && d < 25 && d % 2 == 0) {
+    } else if (d >= 12 && d < 25 && d % 2 == 0) {
       return d - 12;
     }
   });
@@ -98,7 +94,7 @@ for (i = 0; i < data.length; i++) {
       attr("r", function(d) { console.log(d); return d / max * 8; }).
       attr("transform", function() {
           tx = pane_left - 2 * margin + x(j);
-          ty = height - 4 * margin - y(i);
+          ty = height - 5 * margin - y(i);
           return "translate(" + tx + ", " + ty + ")";
         });
   }
