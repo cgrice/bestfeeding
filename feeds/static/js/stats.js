@@ -95,7 +95,7 @@ for (i = 0; i < data.length; i++) {
       enter().
       append("circle").
       style("fill", "#888").
-      attr("r", function(d) { return d / max * 14; }).
+      attr("r", function(d) { return d / max * 5; }).
       attr("transform", function() {
           tx = pane_left - 2 * margin + x(j);
           ty = height - 7 * margin - y(i);
