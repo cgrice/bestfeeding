@@ -67,11 +67,11 @@ punchcard.
   text(function(d) {
     if (d === 0) {
       return "12a";
-    } else if (d > 0 && d < 12) {
+    } else if (d > 0 && d < 12 && d % 2 == 0) {
       return d;
     } else if (d === 12) {
       return "12p";
-    } else if (d > 12 && d < 25) {
+    } else if (d > 12 && d < 25 && d & 2 == 0) {
       return d - 12;
     }
   });
