@@ -71,8 +71,8 @@
         $('.side_select .side_btn').click(function() {
             $('.side_btn').addClass('disabled');
             $(this).removeClass('disabled');
-            $(this).removeClass('btn-warning');
-            $(this).removeClass('btn-info');
+            $('.side_btn').removeClass('btn-warning');
+            $('.side_btn').removeClass('btn-info');
             $('#side_input').val($(this).attr('rel'));
             if($(this).attr('rel') == 'R') {
                 $(this).addClass('btn-info');
