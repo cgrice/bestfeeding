@@ -18,10 +18,11 @@
                     <h3>Add new feed</h3>
                     <br/>
                     <div class="span3 offset3 half">
-                        <span class="btn btn-large btn-warning disabled side_btn" rel="L">Left</span>
+                        <span class="btn btn-large disabled side_btn" rel="L">Left</span>
                     </div>
                     <div class="span3 half">
-                        <span class="btn btn-large btn-info disabled side_btn" rel="R">Right</span>
+                        <span class="btn btn-large disabled side_btn" rel="R">Right</span>
+
                     </div>
                     <input type="hidden" name="side" id="side_input">
                 </div>
@@ -70,7 +71,14 @@
         $('.side_select .side_btn').click(function() {
             $('.side_btn').addClass('disabled');
             $(this).removeClass('disabled');
+            $(this).removeClass('btn-warning');
+            $(this).removeClass('btn-info');
             $('#side_input').val($(this).attr('rel'));
+            if($(this).attr('rel') == 'R') {
+                $(this).addClass('btn-info');
+            } else {
+                $(this).addClass('btn-warning');
+            }
         });
     });
 </script>
