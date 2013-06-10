@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.feeds .delete').live('click', function(event) {
+    $('.feeds .delete').on('click', function(event) {
         $(this).closest('tr').fadeOut();
     });
 });
