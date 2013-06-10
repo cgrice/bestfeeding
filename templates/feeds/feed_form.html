@@ -63,6 +63,9 @@
         showInputs: false,
         disableFocus: true
     });
+    $('#feed_time').on('focus', function(ev) {
+        $('#feed_time').timepicker('showWidget');
+    })
     $('#feed_date').datepicker().on('changeDate', function(ev){
         $('#feed_date').datepicker('hide');
     });
