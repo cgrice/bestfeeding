@@ -42,7 +42,7 @@
                             <div class='swipe-wrap'>
                                 {% for feeds in feeds_by_day reversed %}
                                     <div>
-                                    <h3>{{feeds.grouper}}</h3>
+                                    <h3>{{feeds.grouper}}<small>{% feeds|length %} feeds today</small></h3>
                                     <table class="table table-bordered table-striped feeds">
                                         {% for feed in feeds.list %}
                                             <tr>
