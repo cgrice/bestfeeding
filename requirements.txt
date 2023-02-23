@@ -1,4 +1,4 @@
-Django==1.5
+Django==2.2.28
 South==0.7.6
 Unipath==0.2.1
 argparse==1.2.1
